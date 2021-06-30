@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<GridPane fx:controller="snake.IntroController"
+<GridPane fx:controller="snake.intro.IntroController"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <VBox>
         <Label text="SnakeFX is simple JavaFX project created to pass GUI course on PJATK." wrapText="true" ></Label>

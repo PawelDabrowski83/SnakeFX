@@ -1,4 +1,4 @@
-package snake;
+package snake.intro;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="snake.MenuController"
+          fx:controller="snake.menu.MenuController"
           prefHeight="400.0" prefWidth="600.0" alignment="center" hgap="10" vgap="10">
     <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
 
