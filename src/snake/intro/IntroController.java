@@ -6,28 +6,29 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.stage.Stage;
+import snake.baseController.BaseController;
 
 import java.io.IOException;
 
-public class IntroController {
+public class IntroController extends BaseController {
 
     @FXML
     Button welcomeButton;
 
-    public void exit() {
-        Platform.exit();
-    }
+
 
     public void showMenu() throws IOException {
-        Scene currentScene = welcomeButton.getScene();
-        Stage currentWindow = (Stage) currentScene.getWindow();
+        Stage currentWindow = getStage(welcomeButton);
 
         Parent root = FXMLLoader.load(getClass().getResource("../menu/menu.fxml"));
         Scene nextScene = new Scene(root, 800, 600);
         currentWindow.setScene(nextScene);
 
     }
+
+
 
     public void startGame() {
 

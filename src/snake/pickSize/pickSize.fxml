@@ -14,14 +14,14 @@
     <Label text="Pick size of playfield. Sides cannot be lesser than 5."/>
 
     <GridPane>
-        <ToggleButton text="Small"/>
-        <ToggleButton text="Medium"/>
-        <ToggleButton text="Large"/>
-        <ToggleButton text="Random" onAction="#randomizeSides"/>
-        <Label text="Width:"/>
-        <TextField fx:id="sideWidth"/>
-        <Label text="Height:"/>
-        <TextField fx:id="sideHeight"/>
-        <Button text="Start Game"/>
+        <ToggleButton text="Small" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <ToggleButton text="Medium" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <ToggleButton text="Large" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+        <ToggleButton text="Random" GridPane.rowIndex="0" GridPane.columnIndex="3" onAction="#randomizeSides"/>
+        <Label text="Width:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="sideWidth" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Label text="Height:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="sideHeight" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <Button text="Start Game" GridPane.rowIndex="3" alignment="CENTER"/>
     </GridPane>
 </VBox>
