@@ -28,7 +28,6 @@ public class PickSizeController extends BaseController {
     }
 
     public void randomizeSides() {
-        System.out.println(sideWidth);
         sideWidth.setText(
                 String.valueOf(
                         ThreadLocalRandom.current().nextInt(MIN_SIDE_WIDTH, MAX_SIDE_WIDTH)
