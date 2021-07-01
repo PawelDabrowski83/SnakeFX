@@ -14,10 +14,10 @@
     <Label text="Pick size of playfield. Sides cannot be lesser than 5."/>
 
     <GridPane>
-        <ToggleButton text="Small" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <ToggleButton text="Medium" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-        <ToggleButton text="Large" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-        <ToggleButton text="Random" GridPane.rowIndex="0" GridPane.columnIndex="3" onAction="#randomizeSides"/>
+        <Button text="Small" GridPane.rowIndex="0" GridPane.columnIndex="0" onAction="#setSides"/>
+        <Button text="Medium" GridPane.rowIndex="0" GridPane.columnIndex="1" onAction="#setSides"/>
+        <Button text="Large" GridPane.rowIndex="0" GridPane.columnIndex="2" onAction="#setSides"/>
+        <Button text="Random" GridPane.rowIndex="0" GridPane.columnIndex="3" onAction="#setSides"/>
         <Label text="Width:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
         <TextField fx:id="sideWidth" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
         <Label text="Height:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
