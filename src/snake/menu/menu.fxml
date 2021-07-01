@@ -20,7 +20,7 @@
             <Font size="19"/>
         </font>
     </Text>
-    <Button text="New Game" GridPane.rowIndex="4" alignment="BASELINE_CENTER"></Button>
-    <Button text="High Scores" GridPane.rowIndex="6" alignment="CENTER"></Button>
-    <Button text="Exit" onAction="#exit" GridPane.rowIndex="8" alignment="BASELINE_CENTER"></Button>
+    <Button text="New Game" GridPane.rowIndex="4" alignment="BASELINE_CENTER"/>
+    <Button text="High Scores" GridPane.rowIndex="6" alignment="CENTER"/>
+    <Button text="Exit" onAction="#exit" GridPane.rowIndex="8" alignment="BASELINE_CENTER"/>
 </GridPane>

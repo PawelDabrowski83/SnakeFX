@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="snake.pickSize.PickSizeController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <Label text="Pick size of playfield. Sides cannot be lesser than 5."/>
+
+    <GridPane>
+        <ToggleButton text="Small"/>
+        <ToggleButton text="Medium"/>
+        <ToggleButton text="Large"/>
+        <ToggleButton text="Random" onAction="#randomizeSides"/>
+        <Label text="Width:"/>
+        <TextField fx:id="sideWidth"/>
+        <Label text="Height:"/>
+        <TextField fx:id="sideHeight"/>
+        <Button text="Start Game"/>
+    </GridPane>
+</VBox>
