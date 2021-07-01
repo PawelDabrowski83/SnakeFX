@@ -1,4 +1,3 @@
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.GridPane?>
 
 <?import javafx.scene.control.Button?>
@@ -6,9 +5,9 @@
 <?import javafx.scene.layout.VBox?>
 <GridPane fx:controller="snake.intro.IntroController"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-    <VBox>
-        <Label text="SnakeFX is simple JavaFX project created to pass GUI course on PJATK." wrapText="true" ></Label>
-        <Button text="Continue" onMouseClicked="#showMenu" fx:id="welcomeButton"></Button>
-        <Button text="Exit" onMouseClicked="#exit"></Button>
+    <VBox GridPane.valignment="CENTER">
+        <Label text="SnakeFX is simple JavaFX project created to pass GUI course on PJATK." wrapText="true" alignment="CENTER"/>
+        <Button text="Continue" onMouseClicked="#showMenu" fx:id="welcomeButton"/>
+        <Button text="Exit" onMouseClicked="#exit"/>
     </VBox>
 </GridPane>

@@ -23,7 +23,7 @@ public class IntroController {
         Scene currentScene = welcomeButton.getScene();
         Stage currentWindow = (Stage) currentScene.getWindow();
 
-        Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../menu/menu.fxml"));
         Scene nextScene = new Scene(root, 800, 600);
         currentWindow.setScene(nextScene);
 
