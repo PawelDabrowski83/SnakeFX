@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import snake.baseController.BaseController;
+import snake.model.Snake;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +19,7 @@ public class FieldController extends BaseController implements Initializable {
     Circle head;
     double stepX;
     double stepY;
+    Snake snake;
     @FXML
     GridPane grid;
 
@@ -34,9 +36,10 @@ public class FieldController extends BaseController implements Initializable {
     }
 
     public void run() {
-        head = new Circle(22);
+        snake = new Snake();
+        head = snake.getHead();
         grid.setPrefSize(100, 100);
-        head.setFill(Color.MEDIUMPURPLE);
+
         grid.add(head, 10, 10);
 
         grid.setOnKeyPressed(e ->
