@@ -1,14 +1,10 @@
 package snake.field;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import snake.baseController.BaseController;
 import snake.model.Snake;
 
@@ -31,7 +27,7 @@ public class FieldController extends BaseController implements Initializable {
     Text counter;
     int counterSeconds;
 
-    public static boolean running = true;
+    public static volatile boolean running = true;
 
     @Override
     @FXML
@@ -45,7 +41,6 @@ public class FieldController extends BaseController implements Initializable {
                 try {
                     Thread.sleep(1000);
                     counterSeconds++;
-                    System.out.println(counterSeconds);
                     counter.setText(String.valueOf(counterSeconds));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -97,10 +92,10 @@ public class FieldController extends BaseController implements Initializable {
         running = false;
         counterThread.interrupt();
 
-        Stage currentStage = (Stage) grid.getScene().getWindow();
-
-        Parent root = FXMLLoader.load(getClass().getResource("../endGameScore/endGameScore.fxml"));
-        Scene nextScene = new Scene(root, 800, 600);
-        currentStage.setScene(nextScene);
+//        Stage currentStage = (Stage) grid.getScene().getWindow();
+//
+//        Parent root = FXMLLoader.load(getClass().getResource("../endGameScore/endGameScore.fxml"));
+//        Scene nextScene = new Scene(root, 800, 600);
+//        currentStage.setScene(nextScene);
     }
 }

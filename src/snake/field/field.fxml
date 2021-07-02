@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Text?>
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx"
@@ -15,6 +10,4 @@
     <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
     <Text text="counter" textAlignment="CENTER" fx:id="counter"/>
     <GridPane style="-fx-border-color: black;" fx:id="grid"/>
-
-
 </VBox>
