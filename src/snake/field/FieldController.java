@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
 public class FieldController extends BaseController implements Initializable {
 
     Circle head;
+    double stepX;
+    double stepY;
     @FXML
     GridPane grid;
 
@@ -64,11 +66,47 @@ public class FieldController extends BaseController implements Initializable {
     }
 
     public void move() {
-        double stepX = head.getCenterX() + velocity;
+        switch (direction) {
+            case UP -> moveUp();
+            case DOWN -> moveDown();
+            case LEFT -> moveLeft();
+            case RIGHT -> moveRight();
+        }
+    }
+
+    private void moveUp() {
+        stepX = head.getCenterX();
+        stepY = head.getCenterY() - velocity;
+        actualMove();
+    }
+
+    private void moveDown() {
+        stepX = head.getCenterX();
+        stepY = head.getCenterY() + velocity;
+        actualMove();
+    }
+
+    private void moveLeft() {
+        stepX = head.getCenterX() - velocity;
+        stepY = head.getCenterY();
+        actualMove();
+    }
+
+    private void moveRight() {
+        stepX = head.getCenterX() + velocity;
+        stepY = head.getCenterY();
+        actualMove();
+    }
+
+    private void actualMove() {
         head.setCenterX(stepX);
         head.setTranslateX(stepX);
-        System.out.print(direction + " ");
+        head.setCenterY(stepY);
+        head.setTranslateY(stepY);
+    }
 
+    private boolean isClashed() {
+        return false;
     }
 
     public void moveKey(KeyEvent event) {
