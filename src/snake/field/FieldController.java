@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Cell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -15,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import snake.baseController.BaseController;
 
@@ -38,7 +40,6 @@ public class FieldController extends BaseController implements Initializable {
         System.out.println("initialize");
         Thread thread = new Thread(this::run);
         thread.start();
-
     }
 
     public void run() {
@@ -47,16 +48,19 @@ public class FieldController extends BaseController implements Initializable {
         head.setFill(Color.MEDIUMPURPLE);
         grid.add(head, 10, 10);
 
+        Scene currentScene = grid.getScene();
         grid.setOnKeyPressed(e ->
-        {
-            switch(e.getCode()) {
-                case UP: direction = Direction.UP;
-                case DOWN: direction = Direction.DOWN;
-                case LEFT: direction = Direction.LEFT;
-                case RIGHT: direction = Direction.RIGHT;
-                case Q: exit();
-            }
-        });
+                {   e.consume();
+                    switch(e.getCode()) {
+                        case NUMPAD8: direction = Direction.UP;
+                        case NUMPAD2: direction = Direction.DOWN;
+                        case NUMPAD4: direction = Direction.LEFT;
+                        case NUMPAD6: direction = Direction.RIGHT;
+                        case Q: exit();
+                    }
+                }
+        );
+        grid.requestFocus();
 
         // game loop
         while(running) {
@@ -75,7 +79,7 @@ public class FieldController extends BaseController implements Initializable {
         double stepX = head.getCenterX() + velocity;
         head.setCenterX(stepX);
         head.setTranslateX(stepX);
-        System.out.println(direction);
+        System.out.print(direction + " ");
 
     }
 

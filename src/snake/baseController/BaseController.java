@@ -9,6 +9,7 @@ public class BaseController {
 
     public void exit() {
         Platform.exit();
+        System.exit(0);
     }
 
     protected Stage getStage(Control control) {
