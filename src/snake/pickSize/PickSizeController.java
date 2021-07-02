@@ -35,6 +35,7 @@ public class PickSizeController extends BaseController {
 
         Parent root = FXMLLoader.load(getClass().getResource("../field/field.fxml"));
         Scene nextScene = new Scene(root, fieldWidth, fieldHeight);
+
         currentStage.setScene(nextScene);
     }
 

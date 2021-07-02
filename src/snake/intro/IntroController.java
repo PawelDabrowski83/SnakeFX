@@ -20,11 +20,13 @@ public class IntroController extends BaseController {
 
 
     public void showMenu() throws IOException {
-        Stage currentWindow = getStage(welcomeButton);
+        Stage currentStage = getStage(welcomeButton);
 
         Parent root = FXMLLoader.load(getClass().getResource("../menu/menu.fxml"));
         Scene nextScene = new Scene(root, 800, 600);
-        currentWindow.setScene(nextScene);
+        currentStage.setX(200);
+        currentStage.setY(80);
+        currentStage.setScene(nextScene);
 
     }
 
