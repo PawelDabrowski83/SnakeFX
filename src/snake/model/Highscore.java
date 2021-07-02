@@ -1,6 +1,8 @@
 package snake.model;
 
-public class Highscore {
+import java.io.Serializable;
+
+public class Highscore implements Serializable {
     private final String name;
     private final int score;
 
