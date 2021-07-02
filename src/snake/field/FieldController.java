@@ -2,6 +2,7 @@ package snake.field;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import snake.baseController.BaseController;
@@ -13,12 +14,15 @@ import java.util.ResourceBundle;
 
 public class FieldController extends BaseController implements Initializable {
 
+    public static final int PADDING = 25;
+    public static final int TOP_BAR = 30;
+    Snake snake;
     Circle head;
 
-    Snake snake;
     @FXML
     GridPane grid;
-    boolean running = true;
+
+    public static boolean running = true;
 
     @Override
     @FXML
@@ -29,9 +33,11 @@ public class FieldController extends BaseController implements Initializable {
     }
 
     public void run() {
-        snake = new Snake();
+        snake = new Snake(grid);
         head = snake.getHead();
         grid.setPrefSize(100, 1000);
+
+        grid.add(snake.getHead(), 10, 10);
 
         grid.setOnKeyPressed(e ->
                 {

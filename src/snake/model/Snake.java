@@ -1,19 +1,40 @@
 package snake.model;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import snake.field.Direction;
+import snake.field.FieldController;
 
 public class Snake {
-    public static int REDUCE_SNAKE_VALUE = 4;
+    public static final int REDUCE_SNAKE_VALUE = 4;
+    public static final int BASE_SPEED = 5;
+    public static final int HEAD_RADIUS = 11;
     public IntegerProperty length;
-    double velocity = 3;
+    double velocity;
     double stepX;
     double stepY;
     Direction direction = Direction.RIGHT;
+    Circle head;
+    private final Scene myScene;
+    private final GridPane grid;
+    double topMargin;
+    double bottomMargin;
+    double leftMargin;
+    double rightMargin;
 
-    Circle head = new Circle(22, Color.MEDIUMPURPLE);
+    public Snake(GridPane grid) {
+        this.length = new SimpleIntegerProperty(1);
+        this.velocity = BASE_SPEED;
+        this.myScene = grid.getScene();
+        this.grid = grid;
+        this.head = new Circle(HEAD_RADIUS * 2, Color.MEDIUMPURPLE);
+
+    }
 
     public void add() {
         length.add(1);
@@ -41,6 +62,19 @@ public class Snake {
             case DOWN -> moveDown();
             case LEFT -> moveLeft();
             case RIGHT -> moveRight();
+        }
+
+        this.topMargin = 0;
+        this.bottomMargin =  grid.getHeight() - FieldController.PADDING - HEAD_RADIUS * 2;
+        this.leftMargin = 0;
+        this.rightMargin = grid.getWidth() - FieldController.PADDING - HEAD_RADIUS * 2;
+
+        if (isConflicted()) {
+            FieldController.running = false;
+            System.out.println("stop");
+            System.out.println("x:" + head.getCenterX());
+            System.out.println("y:" + head.getCenterY());
+            System.out.println(bottomMargin);
         }
     }
 
@@ -75,7 +109,20 @@ public class Snake {
         head.setTranslateY(stepY);
     }
 
+    private boolean isConflicted() {
+        return isClashed() || isAway();
+    }
+
     private boolean isClashed() {
         return false;
+    }
+
+    private boolean isAway() {
+        return (head.getCenterY() < topMargin) || (head.getCenterY() > bottomMargin) ||
+                (head.getCenterX() < leftMargin) || (head.getCenterX() > rightMargin);
+    }
+
+    public void speedUp() {
+        velocity++;
     }
 }
