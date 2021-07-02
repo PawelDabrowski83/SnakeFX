@@ -31,9 +31,7 @@ public class FieldController extends BaseController implements Initializable {
     public void run() {
         snake = new Snake();
         head = snake.getHead();
-        grid.setPrefSize(100, 100);
-
-        grid.add(head, 10, 10);
+        grid.setPrefSize(100, 1000);
 
         grid.setOnKeyPressed(e ->
                 {
