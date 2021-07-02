@@ -1,10 +1,15 @@
 package snake.field;
 
+import javafx.animation.PauseTransition;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
 import snake.baseController.BaseController;
 import snake.model.Snake;
 
@@ -21,6 +26,9 @@ public class FieldController extends BaseController implements Initializable {
 
     @FXML
     GridPane grid;
+    @FXML
+    Text counter;
+    IntegerProperty counterSeconds = new SimpleIntegerProperty(0);
 
     public static boolean running = true;
 
@@ -30,6 +38,7 @@ public class FieldController extends BaseController implements Initializable {
         System.out.println("initialize");
         Thread thread = new Thread(this::run);
         thread.start();
+
     }
 
     public void run() {
@@ -37,7 +46,7 @@ public class FieldController extends BaseController implements Initializable {
         head = snake.getHead();
         grid.setPrefSize(100, 1000);
 
-        grid.add(snake.getHead(), 10, 10);
+        grid.add(head, 10, 10);
 
         grid.setOnKeyPressed(e ->
                 {
@@ -54,10 +63,17 @@ public class FieldController extends BaseController implements Initializable {
 
         // game loop
         while(running) {
+            PauseTransition pause = new PauseTransition(Duration.seconds(1));
+            pause.setOnFinished(e -> {
+                counterSeconds.add(1);
+                System.out.println(counterSeconds.get());
+                counter.setText(String.valueOf(counterSeconds.get()));
+            });
+            pause.play();
+
             try {
                 Thread.sleep(100);
                 snake.move();
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
