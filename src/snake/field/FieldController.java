@@ -1,13 +1,18 @@
 package snake.field;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import snake.baseController.BaseController;
 import snake.model.Snake;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -81,11 +86,21 @@ public class FieldController extends BaseController implements Initializable {
                 counterThread.interrupt();
             }
         }
-        stop();
+        try {
+            stop();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void stop() {
+    public void stop() throws IOException {
         running = false;
         counterThread.interrupt();
+
+        Stage currentStage = (Stage) grid.getScene().getWindow();
+
+        Parent root = FXMLLoader.load(getClass().getResource("../endGameScore/endGameScore.fxml"));
+        Scene nextScene = new Scene(root, 800, 600);
+        currentStage.setScene(nextScene);
     }
 }
