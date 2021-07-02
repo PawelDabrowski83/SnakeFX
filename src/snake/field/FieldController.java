@@ -2,10 +2,7 @@ package snake.field;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import snake.baseController.BaseController;
 import snake.model.Snake;
