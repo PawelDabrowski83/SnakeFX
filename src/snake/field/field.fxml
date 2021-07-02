@@ -11,7 +11,7 @@
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="snake.field.FieldController" onKeyPressed="#move">
+      fx:controller="snake.field.FieldController">
     <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
     <Text text="counter" textAlignment="CENTER"/>
     <GridPane style="-fx-border-color: black;" vgap="1" hgap="1" fx:id="grid">

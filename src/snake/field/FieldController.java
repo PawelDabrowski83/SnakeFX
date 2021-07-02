@@ -17,15 +17,11 @@ import java.util.ResourceBundle;
 public class FieldController extends BaseController implements Initializable {
 
     Circle head;
-    double stepX;
-    double stepY;
+
     Snake snake;
     @FXML
     GridPane grid;
-
-    double velocity = 3;
     boolean running = true;
-    Direction direction = Direction.RIGHT;
 
     @Override
     @FXML
@@ -45,10 +41,10 @@ public class FieldController extends BaseController implements Initializable {
         grid.setOnKeyPressed(e ->
                 {
                     switch(e.getCode()) {
-                        case NUMPAD8, W, UP -> direction = Direction.UP;
-                        case NUMPAD2, S, DOWN -> direction = Direction.DOWN;
-                        case NUMPAD4, A, LEFT -> direction = Direction.LEFT;
-                        case NUMPAD6, D, RIGHT -> direction = Direction.RIGHT;
+                        case NUMPAD8, W, UP -> snake.setDirection(Direction.UP);
+                        case NUMPAD2, S, DOWN -> snake.setDirection(Direction.DOWN);
+                        case NUMPAD4, A, LEFT -> snake.setDirection(Direction.LEFT);
+                        case NUMPAD6, D, RIGHT -> snake.setDirection(Direction.RIGHT);
                         case Q -> exit();
                     }
                 }
@@ -59,57 +55,12 @@ public class FieldController extends BaseController implements Initializable {
         while(running) {
             try {
                 Thread.sleep(100);
-                move();
+                snake.move();
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         }
-    }
-
-    public void move() {
-        switch (direction) {
-            case UP -> moveUp();
-            case DOWN -> moveDown();
-            case LEFT -> moveLeft();
-            case RIGHT -> moveRight();
-        }
-    }
-
-    private void moveUp() {
-        stepX = head.getCenterX();
-        stepY = head.getCenterY() - velocity;
-        actualMove();
-    }
-
-    private void moveDown() {
-        stepX = head.getCenterX();
-        stepY = head.getCenterY() + velocity;
-        actualMove();
-    }
-
-    private void moveLeft() {
-        stepX = head.getCenterX() - velocity;
-        stepY = head.getCenterY();
-        actualMove();
-    }
-
-    private void moveRight() {
-        stepX = head.getCenterX() + velocity;
-        stepY = head.getCenterY();
-        actualMove();
-    }
-
-    private void actualMove() {
-        head.setCenterX(stepX);
-        head.setTranslateX(stepX);
-        head.setCenterY(stepY);
-        head.setTranslateY(stepY);
-    }
-
-    private boolean isClashed() {
-        return false;
     }
 
     public void stop() {
