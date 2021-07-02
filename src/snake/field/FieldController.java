@@ -30,7 +30,6 @@ public class FieldController extends BaseController implements Initializable {
     GridPane grid;
     @FXML
     Text counter;
-//    IntegerProperty counterSeconds = new SimpleIntegerProperty(0);
     int counterSeconds;
 
     public static boolean running = true;
