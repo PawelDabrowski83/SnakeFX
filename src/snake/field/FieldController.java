@@ -30,7 +30,8 @@ public class FieldController extends BaseController implements Initializable {
     GridPane grid;
     @FXML
     Text counter;
-    IntegerProperty counterSeconds = new SimpleIntegerProperty(0);
+//    IntegerProperty counterSeconds = new SimpleIntegerProperty(0);
+    int counterSeconds;
 
     public static boolean running = true;
 
@@ -45,9 +46,9 @@ public class FieldController extends BaseController implements Initializable {
             while(running && !counterThread.isInterrupted()) {
                 try {
                     Thread.sleep(1000);
-                    counterSeconds.add(1);
-                    System.out.println(counterSeconds.get());
-                    counter.setText(String.valueOf(counterSeconds.get()));
+                    counterSeconds++;
+                    System.out.println(counterSeconds);
+                    counter.setText(String.valueOf(counterSeconds));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -84,6 +85,7 @@ public class FieldController extends BaseController implements Initializable {
                 snake.move();
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                counterThread.interrupt();
             }
         }
         stop();
