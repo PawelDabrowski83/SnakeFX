@@ -6,9 +6,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="snake.endGameScore.EndGameScoreController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<?import javafx.scene.text.Text?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="snake.endGameScore.EndGameScoreController"
+          prefHeight="400.0" prefWidth="600.0">
+    <Text textAlignment="CENTER" text="Please enter your name:" GridPane.rowIndex="0"/>
+    <Text textAlignment="CENTER" fx:id="points" GridPane.rowIndex="1"/>
+    <TextField alignment="CENTER" fx:id="name" GridPane.rowIndex="2"/>
+    <Button text="Save" onAction="#savePoints" fx:id="saveButton"/>
+</GridPane>
