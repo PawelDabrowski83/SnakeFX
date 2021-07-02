@@ -23,6 +23,8 @@ public class FieldController extends BaseController implements Initializable {
     public static final int TOP_BAR = 30;
     Snake snake;
     Circle head;
+    Thread gameThread;
+    Thread counterThread;
 
     @FXML
     GridPane grid;
@@ -36,9 +38,23 @@ public class FieldController extends BaseController implements Initializable {
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("initialize");
-        Thread thread = new Thread(this::run);
-        thread.start();
+        gameThread = new Thread(this::run);
+        gameThread.start();
 
+        counterThread = new Thread(() -> {
+            while(running && !counterThread.isInterrupted()) {
+                try {
+                    Thread.sleep(1000);
+                    counterSeconds.add(1);
+                    System.out.println(counterSeconds.get());
+                    counter.setText(String.valueOf(counterSeconds.get()));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
+        counterThread.start();
     }
 
     public void run() {
@@ -62,15 +78,7 @@ public class FieldController extends BaseController implements Initializable {
         grid.requestFocus();
 
         // game loop
-        while(running) {
-            PauseTransition pause = new PauseTransition(Duration.seconds(1));
-            pause.setOnFinished(e -> {
-                counterSeconds.add(1);
-                System.out.println(counterSeconds.get());
-                counter.setText(String.valueOf(counterSeconds.get()));
-            });
-            pause.play();
-
+        while(running && !gameThread.isInterrupted()) {
             try {
                 Thread.sleep(100);
                 snake.move();
@@ -78,9 +86,11 @@ public class FieldController extends BaseController implements Initializable {
                 e.printStackTrace();
             }
         }
+        stop();
     }
 
     public void stop() {
         running = false;
+        counterThread.interrupt();
     }
 }
