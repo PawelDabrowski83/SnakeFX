@@ -109,10 +109,6 @@ public class FieldController extends BaseController implements Initializable {
         return false;
     }
 
-    public void moveKey(KeyEvent event) {
-        System.out.println(event.getText());
-    }
-
     public void stop() {
         running = false;
     }
