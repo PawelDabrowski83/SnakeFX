@@ -37,15 +37,14 @@ public class FieldController extends BaseController implements Initializable {
         head.setFill(Color.MEDIUMPURPLE);
         grid.add(head, 10, 10);
 
-        Scene currentScene = grid.getScene();
         grid.setOnKeyPressed(e ->
-                {   e.consume();
+                {
                     switch(e.getCode()) {
-                        case NUMPAD8: direction = Direction.UP;
-                        case NUMPAD2: direction = Direction.DOWN;
-                        case NUMPAD4: direction = Direction.LEFT;
-                        case NUMPAD6: direction = Direction.RIGHT;
-                        case Q: exit();
+                        case NUMPAD8, W, UP -> direction = Direction.UP;
+                        case NUMPAD2, S, DOWN -> direction = Direction.DOWN;
+                        case NUMPAD4, A, LEFT -> direction = Direction.LEFT;
+                        case NUMPAD6, D, RIGHT -> direction = Direction.RIGHT;
+                        case Q -> exit();
                     }
                 }
         );
