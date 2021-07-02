@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="snake.pickSize.PickSizeController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="400.0" prefWidth="600.0" alignment="CENTER">
 
-    <Label text="Pick size of playfield. Sides cannot be lesser than 5."/>
+    <Label text="Pick size of playfield. Sides cannot be lesser than 5." alignment="CENTER"/>
 
-    <GridPane>
+    <GridPane alignment="CENTER">
         <Button text="Small" GridPane.rowIndex="0" GridPane.columnIndex="0" onAction="#setSides"/>
         <Button text="Medium" GridPane.rowIndex="0" GridPane.columnIndex="1" onAction="#setSides"/>
         <Button text="Large" GridPane.rowIndex="0" GridPane.columnIndex="2" onAction="#setSides"/>
         <Button text="Random" GridPane.rowIndex="0" GridPane.columnIndex="3" onAction="#setSides"/>
-        <Label text="Width:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-        <TextField fx:id="sideWidth" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Label text="Width:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+        <TextField fx:id="sideWidth" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
         <Label text="Height:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-        <TextField fx:id="sideHeight" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-        <Button text="Start Game" GridPane.rowIndex="3" alignment="CENTER" onAction="#startGame"/>
+        <TextField fx:id="sideHeight" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+        <Button text="Start Game" GridPane.rowIndex="3" alignment="CENTER" onAction="#startGame" GridPane.columnSpan="4"
+        GridPane.valignment="CENTER"/>
     </GridPane>
 </VBox>
