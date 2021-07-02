@@ -11,11 +11,11 @@
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="snake.field.FieldController">
+      fx:controller="snake.field.FieldController" onKeyPressed="#move">
     <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
     <Text text="counter" textAlignment="CENTER"/>
     <GridPane style="-fx-border-color: black;" vgap="1" hgap="1" fx:id="grid">
-        <Circle onKeyPressed="#move" fx:id="head" radius="22" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-fill: blue;"/>
+<!--        <Circle fx:id="head" radius="22" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-fill: blue;"/>-->
     </GridPane>
 
 
